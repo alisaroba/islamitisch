@@ -1,0 +1,16 @@
+import datetime
+from hijri_converter import convert
+
+def calculate_hijri_date(gregorian_date):
+    hijri_date = convert.Gregorian(gregorian_date.year, gregorian_date.month, gregorian_date.day).to_hijri()
+    return hijri_date
+
+def print_hijri_dates(year):
+    for month in range(1, 13):
+        gregorian_date = datetime.datetime(year, month, 1)
+        hijri_date = calculate_hijri_date(gregorian_date)
+        print(f"Gregorian: {gregorian_date.strftime('%Y-%m-%d')}, Hijri: {hijri_date['day']} {hijri_date['month']['en']} {hijri_date['year']}")
+
+year_2023 = 2023
+print(f"Hijri dates for the year {year_2023}:")
+print_hijri_dates(year_2023)
